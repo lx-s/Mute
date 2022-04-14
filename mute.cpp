@@ -290,6 +290,11 @@ static bool Init(int argc, char** argv)
    return true;
 }
 
+static void Shutdown()
+{
+   CoUninitialize();
+}
+
 int main(int argc, char** argv)
 {
    int rc = EXIT_FAILURE;
@@ -299,6 +304,7 @@ int main(int argc, char** argv)
       } else if (Mute()) {
          rc = EXIT_SUCCESS;
       }
+      Shutdown();
    }
    return rc;
 }
